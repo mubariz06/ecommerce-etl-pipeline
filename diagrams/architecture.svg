@@ -1,0 +1,54 @@
+<svg viewBox="0 0 1050 420" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1050" height="420" fill="#ffffff"/>
+
+  <rect x="380" y="20" width="300" height="60" rx="8" fill="#e1d5e7" stroke="#9673a6"/>
+  <text x="530" y="45" text-anchor="middle" font-weight="bold">Apache Airflow</text>
+  <text x="530" y="63" text-anchor="middle" font-size="11">DAG: ecommerce_etl_pipeline (daily)</text>
+
+  <rect x="20" y="170" width="130" height="60" rx="8" fill="#dae8fc" stroke="#6c8ebf"/>
+  <text x="85" y="195" text-anchor="middle" font-weight="bold">Source CSV</text>
+  <text x="85" y="212" text-anchor="middle" font-size="11">orders_sample.csv</text>
+
+  <rect x="210" y="160" width="160" height="80" rx="8" fill="#d5e8d4" stroke="#82b366"/>
+  <text x="290" y="185" text-anchor="middle" font-weight="bold">Extract</text>
+  <text x="290" y="202" text-anchor="middle" font-size="11">extract.py</text>
+  <text x="290" y="218" text-anchor="middle" font-size="10">land raw file (date-partitioned)</text>
+
+  <rect x="430" y="160" width="180" height="80" rx="8" fill="#d5e8d4" stroke="#82b366"/>
+  <text x="520" y="185" text-anchor="middle" font-weight="bold">Transform (PySpark)</text>
+  <text x="520" y="202" text-anchor="middle" font-size="11">transform.py</text>
+  <text x="520" y="218" text-anchor="middle" font-size="10">clean, dedupe, derive columns</text>
+
+  <rect x="670" y="160" width="180" height="80" rx="8" fill="#ffe6cc" stroke="#d79b00"/>
+  <text x="760" y="185" text-anchor="middle" font-weight="bold">Data Quality Gate</text>
+  <text x="760" y="202" text-anchor="middle" font-size="11">data_quality.py</text>
+  <text x="760" y="218" text-anchor="middle" font-size="10">row count, nulls, negatives</text>
+
+  <rect x="900" y="170" width="130" height="60" rx="8" fill="#d5e8d4" stroke="#82b366"/>
+  <text x="965" y="195" text-anchor="middle" font-weight="bold">Load</text>
+  <text x="965" y="212" text-anchor="middle" font-size="11">load.py (idempotent)</text>
+
+  <rect x="900" y="300" width="130" height="60" rx="8" fill="#f8cecc" stroke="#b85450"/>
+  <text x="965" y="325" text-anchor="middle" font-weight="bold">Warehouse</text>
+  <text x="965" y="342" text-anchor="middle" font-size="10">PostgreSQL (fact_orders)</text>
+  <text x="965" y="355" text-anchor="middle" font-size="9" font-style="italic">swap for Snowflake</text>
+
+  <line x1="150" y1="200" x2="205" y2="200" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="370" y1="200" x2="425" y2="200" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="610" y1="200" x2="665" y2="200" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="850" y1="200" x2="895" y2="200" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="965" y1="230" x2="965" y2="295" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <line x1="450" y1="80" x2="290" y2="155" stroke="#999" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <line x1="510" y1="80" x2="518" y2="155" stroke="#999" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <line x1="580" y1="80" x2="750" y2="155" stroke="#999" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <line x1="620" y1="60" x2="960" y2="165" stroke="#999" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <text x="530" y="400" text-anchor="middle" font-size="11" fill="#666">Solid arrows = data flow &#160;&#160;|&#160;&#160; Dashed arrows = Airflow task orchestration</text>
+</svg>

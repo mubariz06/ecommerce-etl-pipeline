@@ -1,0 +1,31 @@
+order_id,customer_id,order_date,product_category,product_name,quantity,unit_price,country,status
+1001,C001,2024-01-05,Electronics,Wireless Mouse,2,19.99,India,Completed
+1002,C002,2024-01-05,Home & Kitchen,Blender,1,45.50,USA,Completed
+1003,C003,2024-01-06,Electronics,USB-C Cable,3,7.99,India,Completed
+1004,C001,2024-01-06,Books,Data Engineering 101,1,29.99,India,Cancelled
+1005,C004,2024-01-07,Electronics,Laptop Stand,1,34.00,UK,Completed
+1006,,2024-01-07,Home & Kitchen,Air Fryer,1,89.99,USA,Completed
+1007,C005,2024-01-08,Clothing,Running Shoes,1,,India,Completed
+1008,C006,2024-01-08,Electronics,Bluetooth Speaker,2,25.00,Canada,Completed
+1009,C002,2024-01-09,Books,Clean Code,1,32.50,USA,Completed
+1010,C007,2024-01-09,Clothing,Denim Jacket,1,55.00,India,Returned
+1011,C008,2024-01-10,Electronics,Wireless Mouse,1,19.99,Germany,Completed
+1012,C009,2024-01-10,Home & Kitchen,Non-stick Pan,2,22.00,India,Completed
+1013,C003,2024-01-11,Electronics,USB-C Cable,5,7.99,India,Completed
+1014,C010,2024-01-11,Books,Fluent Python,1,38.00,USA,Completed
+1015,C011,2024-01-12,Clothing,Running Shoes,2,60.00,UK,Completed
+1016,C004,2024-01-12,Electronics,Laptop Stand,1,34.00,UK,Cancelled
+1017,C012,2024-01-13,Home & Kitchen,Blender,1,45.50,India,Completed
+1018,C013,2024-01-13,Electronics,Bluetooth Speaker,1,25.00,USA,Completed
+1019,C005,2024-01-14,Clothing,Denim Jacket,1,55.00,India,Completed
+1020,C014,2024-01-14,Books,Data Engineering 101,2,29.99,Canada,Completed
+1021,C015,2024-01-15,Electronics,Wireless Mouse,3,19.99,India,Completed
+1022,C006,2024-01-15,Home & Kitchen,Air Fryer,1,89.99,USA,Returned
+1023,C016,2024-01-16,Electronics,USB-C Cable,2,7.99,Germany,Completed
+1024,C017,2024-01-16,Clothing,Running Shoes,1,60.00,India,Completed
+1025,C018,2024-01-17,Books,Clean Code,1,32.50,UK,Completed
+1026,C001,2024-01-17,Electronics,Bluetooth Speaker,1,25.00,India,Completed
+1027,C019,2024-01-18,Home & Kitchen,Non-stick Pan,1,22.00,USA,Completed
+1028,C020,2024-01-18,Electronics,Laptop Stand,2,34.00,India,Completed
+1029,C007,2024-01-19,Clothing,Denim Jacket,1,55.00,India,Cancelled
+1030,C021,2024-01-19,Books,Fluent Python,1,38.00,Canada,Completed

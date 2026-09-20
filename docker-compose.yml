@@ -1,0 +1,74 @@
+version: "3.8"
+
+x-airflow-common: &airflow-common
+  build: .
+  environment: &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${AIRFLOW_DB_USER}:${AIRFLOW_DB_PASSWORD}@airflow-metadata-db/${AIRFLOW_DB_NAME}
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
+    RAW_DATA_PATH: /opt/airflow/data/raw/orders_sample.csv
+    LANDING_ZONE: /opt/airflow/data/landing
+    PROCESSED_DATA_PATH: /opt/airflow/data/processed
+    WAREHOUSE_TABLE: ${WAREHOUSE_TABLE}
+    WAREHOUSE_DB_HOST: warehouse-db
+    WAREHOUSE_DB_PORT: 5432
+    WAREHOUSE_DB_NAME: ${WAREHOUSE_DB_NAME}
+    WAREHOUSE_DB_USER: ${WAREHOUSE_DB_USER}
+    WAREHOUSE_DB_PASSWORD: ${WAREHOUSE_DB_PASSWORD}
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./scripts:/opt/airflow/scripts
+    - ./data:/opt/airflow/data
+    - airflow_logs:/opt/airflow/logs
+  depends_on:
+    - airflow-metadata-db
+    - warehouse-db
+
+services:
+  airflow-metadata-db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${AIRFLOW_DB_USER}
+      POSTGRES_PASSWORD: ${AIRFLOW_DB_PASSWORD}
+      POSTGRES_DB: ${AIRFLOW_DB_NAME}
+    volumes:
+      - airflow_metadata:/var/lib/postgresql/data
+
+  warehouse-db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${WAREHOUSE_DB_USER}
+      POSTGRES_PASSWORD: ${WAREHOUSE_DB_PASSWORD}
+      POSTGRES_DB: ${WAREHOUSE_DB_NAME}
+    ports:
+      - "5433:5432"
+    volumes:
+      - warehouse_data:/var/lib/postgresql/data
+      - ./sql/init_warehouse.sql:/docker-entrypoint-initdb.d/init_warehouse.sql
+
+  airflow-init:
+    <<: *airflow-common
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - "airflow db migrate && airflow users create --username ${AIRFLOW_ADMIN_USER} --password ${AIRFLOW_ADMIN_PASSWORD} --firstname Admin --lastname User --role Admin --email admin@example.com"
+
+  airflow-webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - "8080:8080"
+    depends_on:
+      - airflow-init
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    depends_on:
+      - airflow-init
+
+volumes:
+  airflow_metadata:
+  warehouse_data:
+  airflow_logs:
