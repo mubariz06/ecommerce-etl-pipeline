@@ -115,13 +115,7 @@ Implemented in `scripts/data_quality.py`, run as its own Airflow task **before**
 - No negative revenue values
 
 ## 🖼️ Screenshots
-See [`screenshots/`](screenshots/) — add DAG graph view, a successful run, task logs, and a warehouse query result after your first local run.
-## 🔮 Possible Extensions
-- Replace the CSV source with a REST API extractor and incremental (CDC-style) loads
-- Add Great Expectations for richer data-quality validation
-- Add a `dbt` layer on top of `fact_orders` for downstream modeling
-- Deploy Airflow on AWS MWAA or Astronomer instead of local Docker
-
+See [`screenshots/`](screenshots/)
 ## 👤 Author
 **Mohammed Mubariz** — Big Data Engineer
 [LinkedIn](https://linkedin.com/in/mubariz06) · gulammohammedmubarizuddin@gmail.com
