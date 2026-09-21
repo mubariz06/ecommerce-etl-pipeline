@@ -2,7 +2,7 @@
 
 A production-style ETL pipeline that extracts raw e-commerce order data, cleans and enriches it with **PySpark**, runs automated data-quality checks, and loads it into an analytics warehouse — all orchestrated by **Apache Airflow** and fully containerized with Docker.
 
-This project demonstrates the same design pattern used for large-scale production pipelines (Databricks/EMR + Airflow + Snowflake), scaled down to run reproducibly on a laptop.
+This project demonstrates the same design pattern used for large-scale production pipelines (Databricks/EMR + Airflow + Snowflake), scaled down to run reproducible on a laptop.
 
 ## 📌 Why this project
 Real ETL pipelines fail quietly when data is dirty, late, or duplicated. This pipeline is built around three things that matter in production:
@@ -13,9 +13,6 @@ Real ETL pipelines fail quietly when data is dirty, late, or duplicated. This pi
 ## 🏗️ Architecture
 
 ![Architecture Diagram](diagrams/architecture.svg)
-
-*(Editable source: `diagrams/architecture.drawio` — open at [app.diagrams.net](https://app.diagrams.net))*
-
 **Flow:**
 1. **Extract** — raw CSV is copied into a date-partitioned landing zone (simulates pulling from a source DB/API).
 2. **Transform** — PySpark reads the landing file, enforces a schema, handles nulls, de-duplicates on `order_id`, derives `revenue`/`order_year`/`order_month`, and filters out non-completed orders. Output is written as Parquet.
@@ -28,7 +25,7 @@ Real ETL pipelines fail quietly when data is dirty, late, or duplicated. This pi
 |---|---|
 | Orchestration | Apache Airflow 2.9 (LocalExecutor) |
 | Processing | PySpark 3.5 |
-| Warehouse | PostgreSQL 15 *(swappable for Snowflake — see below)* |
+| Warehouse | PostgreSQL 15 |
 | Language | Python 3.10 |
 | Containerization | Docker, Docker Compose |
 | Data format | CSV (source) → Parquet (processed) |
@@ -119,7 +116,6 @@ Implemented in `scripts/data_quality.py`, run as its own Airflow task **before**
 
 ## 🖼️ Screenshots
 See [`screenshots/`](screenshots/) — add DAG graph view, a successful run, task logs, and a warehouse query result after your first local run.
-
 ## 🔮 Possible Extensions
 - Replace the CSV source with a REST API extractor and incremental (CDC-style) loads
 - Add Great Expectations for richer data-quality validation
