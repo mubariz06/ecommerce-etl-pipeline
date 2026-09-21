@@ -1,0 +1,6 @@
+.env
+data/processed/
+data/landing/
+__pycache__/
+*.pyc
+.venv/
