@@ -1,16 +1,5 @@
 # Screenshots
-
-After running the pipeline locally (see main README setup steps), add screenshots here:
-
-1. `dag_graph_view.png` — Airflow UI, Graph view of `ecommerce_etl_pipeline` showing all 4 tasks green.
-2. `dag_run_success.png` — Airflow UI, Grid view showing a successful daily run.
-3. `task_logs_transform.png` — Logs of the `transform_orders` task showing the PySpark row counts (raw vs. cleaned).
-4. `warehouse_query_result.png` — `psql` or a SQL client showing `SELECT * FROM fact_orders LIMIT 10;` after a successful load.
-
-Optional: record a short demo GIF (e.g. with [Kap](https://getkap.co/) or [ScreenToGif](https://www.screentogif.com/)) of triggering the DAG in the Airflow UI end-to-end and name it `demo.gif`.
-
-Once added, reference them in the main `README.md` like:
-
-```markdown
-![DAG Graph View](screenshots/dag_graph_view.png)
-```
+1. `dag_graph_view.png` — Airflow UI, Graph view of `ecommerce_etl_pipeline` showing all 4 tasks green.<img width="1887" height="798" alt="dag_graph_view" src="https://github.com/user-attachments/assets/19735ef5-8fa0-4d41-94b7-5b1939422524" />
+2. `dag_run_success.png` — Airflow UI, Grid view showing a successful daily run.<img width="1887" height="620" alt="dag_run_success" src="https://github.com/user-attachments/assets/98fd8093-8339-4346-a0f7-a8c1b27944a4" />
+3. `task_logs_transform.png` — <img width="1888" height="754" alt="task_logs_transform" src="https://github.com/user-attachments/assets/30504741-99af-4756-906b-f1a648d41904" />
+4. `warehouse_query_result.png` — <img width="1446" height="221" alt="warehouse_query_result" src="https://github.com/user-attachments/assets/f77e7dd2-5c36-4d5f-a5ea-956e4fa607e5" />
